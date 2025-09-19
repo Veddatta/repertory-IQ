@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repertory IQ</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="https://i.postimg.cc/T2qSZ2Fn/file-00000000282861f8aef3e587ff03229d.png" type="image/png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0066cc">
+</head>
+<body>
+  <img src="https://i.postimg.cc/T2qSZ2Fn/file-00000000282861f8aef3e587ff03229d.png" 
+       alt="Repertory IQ Logo" 
+       class="logo">
+
+  <div class="container">
+    <h1>Hello,</h1>
+    <p id="status-text">Loading...</p>
+
+    <div class="repertory-choice">
+      <span>Choose Repertory:</span>
+      <label><input type="radio" name="repertory" value="Kent" checked> Kent's</label>
+      <label><input type="radio" name="repertory" value="Boericke"> Boericke's</label>
+      <label><input type="radio" name="repertory" value="BTPB"> BTPB</label>
+      <label><input type="radio" name="repertory" value="Clarke"> Clarke's</label>
+    </div>
+
+    <div class="mode-selection">
+      <span>Analysis Mode:</span>
+      <label><input type="radio" name="mode" value="single" checked> Single Symptom</label>
+      <label><input type="radio" name="mode" value="remedy"> Remedy Search</label>
+      <label><input type="radio" name="mode" value="totality"> Totality Analysis</label>
+    </div>
+
+    <div id="single-mode" class="mode-section">
+      <div class="input-container">
+        <label for="main-input">Enter your symptoms or rubric:</label>
+        <textarea id="main-input" class="symptom-input" placeholder="e.g. I feel anxious at night OR Mind - Anxiety - Night"></textarea>
+      </div>
+
+      <div class="buttons">
+        <button id="find-match-btn" class="btn btn-primary">Find Best Match</button>
+        <button id="ask-ai-btn" class="btn btn-success">Ask AI to Generate</button>
+        <button id="direct-search-btn" class="btn btn-purple">Search Rubric</button>
+      </div>
+    </div>
+
+    <div id="remedy-mode" class="mode-section hidden">
+      <div class="input-container">
+        <label for="remedy-input">Enter remedy name:</label>
+        <input type="text" id="remedy-input" class="symptom-input" placeholder="e.g. Arsenicum, Belladonna, Nux vomica">
+        <div id="remedy-suggestions" class="remedy-suggestions"></div>
+      </div>
+
+      <div class="buttons">
+        <button id="search-remedy-btn" class="btn btn-info">Search Remedy</button>
+        <button id="popular-remedies-btn" class="btn btn-secondary">Show Popular Remedies</button>
+      </div>
+    </div>
+
+    <div id="totality-mode" class="mode-section hidden">
+      <h3>Totality Analysis</h3>
+      <p>Enter multiple symptoms for comprehensive remedy analysis:</p>
+      
+      <div id="symptoms-list" class="symptoms-list">
+        <div class="symptom-entry">
+          <input type="text" placeholder="Enter symptom or rubric..." class="symptom-input-field">
+          <button class="remove-symptom" onclick="removeSymptom(this)">Remove</button>
+        </div>
+      </div>
+      
+      <div class="totality-controls">
+        <button onclick="addSymptom()" class="btn btn-info">Add Symptom</button>
+        <button id="analyze-totality-btn" class="btn btn-warning">Analyze Totality</button>
+        <button id="clear-symptoms-btn" class="btn btn-secondary">Clear All</button>
+      </div>
+    </div>
+
+    <hr>
+
+    <div id="result-container" style="display:none;">
+      <h2 id="result-header"></h2>
+      <div id="result-output"></div>
+      <p id="result-context"></p>
+    </div>
+  </div>
+
+  <footer>
+    Created by Dr Veddatta Kulkarni & Dr Jayashri Kulkarni
+  </footer>
+
+  <script src="js/script.js"></script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("service-worker.js")
+          .then((reg) => console.log("Service worker registered", reg))
+          .catch((err) => console.error("Service worker error:", err));
+      });
+    }
+  </script>
+</body>
+</html>

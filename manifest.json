@@ -1,0 +1,16 @@
+{
+  "name": "Repertory IQ",
+  "short_name": "RepertoryIQ",
+  "description": "Homeopathic Repertory Search Tool",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0066cc",
+  "icons": [
+    {
+      "src": "https://i.postimg.cc/T2qSZ2Fn/file-00000000282861f8aef3e587ff03229d.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
